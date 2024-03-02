@@ -12,6 +12,17 @@ const resultValue = document.querySelector(".result");
 
 function addition(operand1, operand2) { return operand1 + operand2;}
 function modulo(operand1,operand2){return operand1 % operand2;}
+function division(operand1,operand2){
+  if (operand2 == 0) return "division by zero is undefined";
+  return operand1 / operand2;
+}
+function multiply(operand1,operand2){
+  return operand1 * operand2; 
+}
+function minus(operand1,operand2){
+  return operand1 - operand2;
+
+}
 
 let operand1 = "";
 let operatorClicked = "";
@@ -44,15 +55,17 @@ off.addEventListener('click', () => {
       hide.textContent = '';
       hide.style.padding = "15px 10px";
     container.style.display = 'block'; 
+    operator.forEach(operators => {
+      operators.classList.remove('active');
+    });
   }, 300);
 });
 
 allButton.addEventListener('click',(event) =>{
+  
   event.preventDefault();
   let value;
   if(event.target.className == 'numbers'){
-    
-
     
     
     value = event.target.textContent;
@@ -65,12 +78,16 @@ operator.forEach(operators => {
 });
   }
 
+  // clear
 
   if(event.target.className == "clr"){
     if(event.target.textContent == "C"){
     hide.textContent = "";
     hide.style.padding = "15px 10px";
   }}
+
+
+  // delete
 
   if(event.target.className == "del"){
     if(event.target.textContent == "ce"){
@@ -79,8 +96,9 @@ operator.forEach(operators => {
       hide.style.padding = "15px 10px";
     }}
   }
-
   
+
+  // addition
   if(event.target.className == "operator"){
     if(event.target.textContent == "+"){
       operand1 =  parseFloat(hide.textContent);
@@ -94,8 +112,9 @@ operator.forEach(operators => {
       });
       event.target.classList.add('active');
     
-
     }
+
+    //modulo
     else if (event.target.textContent === "%"){
       operand1 =  parseFloat(hide.textContent);
       operatorClicked = "%";
@@ -110,7 +129,53 @@ operator.forEach(operators => {
 
     }
 
+    // division
+    else if(event.target.textContent === "/"){
+    
+      operand1 = parseFloat(hide.textContent)
+      operatorClicked = "/";   
+      hide.textContent ="";
+      hide.style.padding = "15px 10px";     
+      
+      operator.forEach(operators => {
+        operators.classList.remove('active');
+      });
+      event.target.classList.add('active');
+    }
+
+    // multiplication
+    else if(event.target.textContent === "X"){
+      operand1 = parseFloat(hide.textContent);
+      operatorClicked = "X";
+
+      hide.textContent ="";
+      hide.style.padding = "15px 10px";     
+      
+      operator.forEach(operators => {
+        operators.classList.remove('active');
+      });
+      event.target.classList.add('active');
+    }
+
+
+    // subtraction
    
+    else if(event.target.textContent === "-"){
+      
+      operand1 = parseFloat(hide.textContent);
+      operatorClicked = "-";
+      hide.textContent ="";
+      hide.style.padding = "15px 10px";     
+      
+      operator.forEach(operators => {
+        operators.classList.remove('active');
+      });
+      event.target.classList.add('active');
+  
+    }
+
+
+    // equals
 
     else if(event.target.textContent == "=" && operatorClicked){
      
@@ -123,7 +188,15 @@ operator.forEach(operators => {
              break;
         case "%":
              result = modulo(operand1,operand2);
-             break;     
+             break;    
+        case "/":
+             result = division(operand1,operand2);
+             break;
+        case "X":
+             result = multiply(operand1,operand2);
+             break;  
+        case "-":
+             result = minus(operand1,operand2);  
       }
       
 
@@ -132,6 +205,8 @@ operator.forEach(operators => {
      
     }
   }
+
+  
 
 })
 
