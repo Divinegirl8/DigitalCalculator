@@ -10,6 +10,7 @@ const hide = document.querySelector(".typing-animation");
 const operator = document.querySelector(".operator");
 
 
+
 open.addEventListener('click', () => {
   backcontainer.style.display = 'block';
   hide.style.display = 'block';
@@ -20,7 +21,8 @@ open.addEventListener('click', () => {
   backcontainer.style.top = frontContainerRect.top + 'px';
   backcontainer.style.left = frontContainerRect.left + 'px';
   buttons.classList.add('slide-up');
-  buttons.classList.remove('slide-down'); 
+  buttons.classList.remove('slide-down');
+
 
   container.style.display = 'none'; 
 });
@@ -40,11 +42,36 @@ allButton.addEventListener('click',(event) =>{
   event.preventDefault();
   let value;
   if(event.target.className == 'numbers'){
-value = event.target.textContent;
+    value = event.target.textContent;
+hide.textContent += value;
+hide.style.fontSize = "25px";
+hide.style.padding = "5px";
   }
 
-  hide.textContent = value;
-  hide.style.fontSize = "25px";
+
+  if(event.target.className == "clr"){
+    if(event.target.textContent == "C"){
+    hide.textContent = "";
+    hide.style.padding = "15px 10px";
+  }}
+
+  if(event.target.className == "del"){
+    if(event.target.textContent == "ce"){
+      hide.textContent = hide.textContent.slice(0,-1);
+      if(hide.textContent == ""){
+      hide.style.padding = "15px 10px";
+    }}
+  }
+
+  
+  if(event.target.className == "operator"){
+    if(event.target.textContent == "+"){
+      alert(true)
+    }
+    else if (event.target.textContent == "%"){
+      alert(true)
+    }
+  }
 
 })
 
