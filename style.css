@@ -1,0 +1,143 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #bebcc0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.content{
+    background-color: #D9D9D9;
+    width: 11%;
+    margin-left: 400px;
+    margin-top: 400px;
+    padding-left: 30px;
+    height: 30px;
+    font-size: 20px;
+    padding-top: 5px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 900px;
+    background-color: #313131;
+    box-sizing: border-box;
+    padding: 0 0 20px;
+    overflow: hidden;
+    max-width: 500px;
+    transition: transform 0.5s ease-out;
+    border-radius: 30px;
+    margin: 0px;
+    /* box-shadow: 0px 1px 6px rgb(247, 247, 185); */
+    display: none;
+}
+
+.screen {
+   background-color: #D9D9D9;
+    height: 360px;
+    width: 100%;
+    margin: 0;
+}
+
+.buttons {
+    background-color:#313131;
+    width: 100%;
+    margin-top: 950px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+}
+
+
+.frontcontainer {
+    position: relative; 
+    width: 100%;
+    height: 900px;
+    background-color: #313131;
+    box-sizing: border-box;
+    padding: 0 0 20px;
+    overflow: hidden;
+    max-width: 500px;
+    margin: 50px auto;
+    transition: transform 0.5s ease-in-out;
+    border-radius: 30px;
+
+    
+}
+
+ul{
+    padding: 20px;
+    list-style-type: none;
+    cursor: pointer;
+}
+
+li{padding: 1px;
+   margin: 20px 10px;
+   
+ 
+}
+.container span {
+    color: rgb(15, 15, 71);
+    padding: 30px;
+    border-radius: 50%;
+    font-size: 22px;
+    line-height: 20px;
+    display: inline-block;
+    margin-right: 31px; 
+}
+
+.operator{
+    background-color: #FFBFFF;
+    color: #78007A;
+}
+
+.del{
+    background-color: #FFBFFF;
+}
+
+.numbers{
+    background-color: #D9D9D9;
+}
+
+.clr{
+    background-color: #000;
+    
+}
+
+button{
+    margin-left: 5px;
+    width: 17%;
+    height: 70px;
+    border: none;
+    font-size: 22px;
+    border-radius: 50%;
+
+}
+
+.btn{
+    background-color:#A300A5;
+    color: white;
+}
+
+
+.buttons.slide-up {
+    transform: translateY(-175%);
+    transition: transform 0.3s ease-in-out;;
+}
+
+.buttons.slide-down {
+    transform: translateY(100%);
+    transition: transform 0.5s ease-in-out;;
+}
+
+
+.frontcontainer.slide-down {
+    transform: translateY(100%);
+    transition: transform 0s ease-in-out;
+  }
+  
