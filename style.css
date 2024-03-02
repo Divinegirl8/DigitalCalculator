@@ -127,9 +127,12 @@ button{
 .btn{
     background-color:#A300A5;
     color: white;
+    cursor: pointer;
 }
 
-
+.active{
+    background-color: #d4abab;
+}
 .buttons.slide-up {
     transform: translateY(-175%);
     transition: transform 0.3s ease-in-out;;

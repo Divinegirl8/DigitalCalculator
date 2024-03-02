@@ -7,8 +7,16 @@ const buttons = document.querySelector('.buttons');
 const screen = document.querySelector('.screen');
 const allButton = document.querySelector('#allButtons')
 const hide = document.querySelector(".typing-animation");
-const operator = document.querySelector(".operator");
+const operator = document.querySelectorAll(".operator");
+const resultValue = document.querySelector(".result");
 
+function addition(operand1, operand2) { return operand1 + operand2;}
+function modulo(operand1,operand2){return operand1 % operand2;}
+
+let operand1 = "";
+let operatorClicked = "";
+let result;
+let operand2;
 
 
 open.addEventListener('click', () => {
@@ -43,10 +51,18 @@ allButton.addEventListener('click',(event) =>{
   event.preventDefault();
   let value;
   if(event.target.className == 'numbers'){
+    
+
+    
+    
     value = event.target.textContent;
 hide.textContent += value;
 hide.style.fontSize = "25px";
 hide.style.padding = "5px";
+
+operator.forEach(operators => {
+  operators.classList.remove('active');
+});
   }
 
 
@@ -67,10 +83,53 @@ hide.style.padding = "5px";
   
   if(event.target.className == "operator"){
     if(event.target.textContent == "+"){
-      alert(true)
+      operand1 =  parseFloat(hide.textContent);
+
+      operatorClicked = "+";
+      hide.textContent ="";
+      hide.style.padding = "15px 10px";     
+      
+      operator.forEach(operators => {
+        operators.classList.remove('active');
+      });
+      event.target.classList.add('active');
+    
+
     }
-    else if (event.target.textContent == "%"){
-      alert(true)
+    else if (event.target.textContent === "%"){
+      operand1 =  parseFloat(hide.textContent);
+      operatorClicked = "%";
+      hide.textContent ="";
+      hide.style.padding = "15px 10px";     
+      
+      operator.forEach(operators => {
+        operators.classList.remove('active');
+      });
+      event.target.classList.add('active');
+    
+
+    }
+
+   
+
+    else if(event.target.textContent == "=" && operatorClicked){
+     
+      operand2 = parseFloat(hide.textContent);
+    
+
+      switch(operatorClicked){
+        case "+":
+             result = addition(operand1, operand2);
+             break;
+        case "%":
+             result = modulo(operand1,operand2);
+             break;     
+      }
+      
+
+      hide.textContent = result;
+      operatorClicked = "";
+     
     }
   }
 
