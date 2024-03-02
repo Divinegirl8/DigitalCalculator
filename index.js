@@ -33,7 +33,8 @@ off.addEventListener('click', () => {
 
   setTimeout(() => {
     backcontainer.style.display = 'none';
-      hide.style.display = 'none';
+      hide.textContent = '';
+      hide.style.padding = "15px 10px";
     container.style.display = 'block'; 
   }, 300);
 });
