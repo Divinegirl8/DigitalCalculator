@@ -11,7 +11,7 @@ const operator = document.querySelectorAll(".operator");
 const popButtons = document.querySelectorAll(".numbers");
 
 
-
+//open
 open.addEventListener('click', () => {
   backcontainer.style.display = 'block';
   hide.style.display = 'block';
@@ -28,6 +28,8 @@ open.addEventListener('click', () => {
   container.style.display = 'none'; 
 });
 
+// off
+
 off.addEventListener('click', () => {
   buttons.classList.remove('slide-up');
   buttons.classList.add('slide-down');
@@ -43,19 +45,38 @@ off.addEventListener('click', () => {
   }, 300);
 });
 
+// buttons
+
 allButton.addEventListener('click', (event) => {
   event.preventDefault();
   let value;
+
+  // numbers
 
   if (event.target.className == 'numbers') {
     value = event.target.textContent;
     hide.textContent += value;
     hide.style.fontSize = "25px";
     hide.style.padding = "5px";
+
+
+    popButtons.forEach((number) => {
+      number.classList.remove('clicked');
+    });
+
+   
+    event.target.classList.add('clicked');
+
+    setTimeout(() => {
+      event.target.classList.remove('clicked');
+    }, 500);
+
     operator.forEach(operators => {
       operators.classList.remove('active');
     });
   }
+
+
 
   // clear
   if (event.target.className == "clr") {
@@ -65,8 +86,18 @@ allButton.addEventListener('click', (event) => {
       operator.forEach(operators => {
         operators.classList.remove('active');
       });
+
+      
+      event.target.classList.add('clicked');
+  
+      setTimeout(() => {
+        event.target.classList.remove('clicked');
+      }, 500);
+  
+  
     }
   }
+
 
   // delete
   if (event.target.className == "del") {
@@ -78,6 +109,12 @@ allButton.addEventListener('click', (event) => {
       operator.forEach(operators => {
         operators.classList.remove('active');
       });
+
+      event.target.classList.add('clicked');
+  
+      setTimeout(() => {
+        event.target.classList.remove('clicked');
+      }, 500);
     }
   }
 
@@ -86,6 +123,12 @@ allButton.addEventListener('click', (event) => {
     let operatorText = event.target.textContent;
 
     if (operatorText == "=") {
+      event.target.classList.add('clicked');
+  
+      setTimeout(() => {
+        event.target.classList.remove('clicked');
+      }, 500);
+  
       try {
         hide.textContent = eval(hide.textContent);
       } catch (error) {
@@ -97,6 +140,7 @@ allButton.addEventListener('click', (event) => {
         operators.classList.remove('active');
       });
       event.target.classList.add('active');
+      hide.style.padding = "5px";
     }
   }
 });
